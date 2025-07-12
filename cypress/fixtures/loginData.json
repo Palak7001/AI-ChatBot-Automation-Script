@@ -1,0 +1,23 @@
+{
+    "loginData": {
+        "validEmail": "user@example.com",
+        "validOTP": "123456",
+        "invalidEmail": "invalid@example.com",
+        "invalidOTP": "000000"
+    },
+    "apiEndPoints": {
+        "login": "/api/v1/auth/login",
+        "dashboard": "/api/v1/dashboard",
+        "verifyOTP": "/api/v1/auth/verify-otp"
+    },
+    "testUsers": {
+        "admin": {
+            "email": "admin@example.com",
+            "otp": "123456"
+        },
+        "user": {
+            "email": "user@example.com",
+            "otp": "654321"
+        }
+    }
+} 

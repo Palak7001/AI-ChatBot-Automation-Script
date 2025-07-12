@@ -1,0 +1,29 @@
+{
+    "reporterEnabled": "mochawesome",
+    "mochawesomeReporterOptions": {
+        "reportDir": "cypress/reports/mocha",
+        "quite": true,
+        "overwrite": false,
+        "html": true,
+        "json": true,
+        "embeddedScreenshots": true,
+        "charts": true,
+        "reportPageTitle": "AI Chatbot Admin Panel - Test Report",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false
+    },
+    "allureReporterOptions": {
+        "resultsDir": "cypress/reports/allure-results",
+        "links": [
+            {
+                "type": "issue",
+                "urlTemplate": "https://example.org/browse/%s"
+            },
+            {
+                "type": "tms",
+                "urlTemplate": "https://example.org/browse/%s"
+            }
+        ]
+    }
+} 

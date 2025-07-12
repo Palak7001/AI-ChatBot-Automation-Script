@@ -1,0 +1,315 @@
+{
+  "users": {
+    "admin": {
+      "username": "admin@company.com",
+      "password": "SecurePass123!",
+      "fullName": "Admin User",
+      "role": "Administrator",
+      "status": "Active"
+    },
+    "botManager": {
+      "username": "botmanager@company.com",
+      "password": "BotManager123!",
+      "fullName": "Bot Manager User",
+      "role": "Bot Manager",
+      "status": "Active"
+    },
+    "analyst": {
+      "username": "analyst@company.com",
+      "password": "Analyst123!",
+      "fullName": "Analytics User",
+      "role": "Analytics Viewer",
+      "status": "Active"
+    },
+    "testUser": {
+      "username": "test@company.com",
+      "password": "TestPass123!",
+      "fullName": "Test User",
+      "role": "Bot Manager",
+      "status": "Active"
+    }
+  },
+  "bots": {
+    "customerSupport": {
+      "name": "Customer Support Bot",
+      "description": "AI-powered customer support chatbot for handling customer inquiries and support requests",
+      "type": "Customer Service",
+      "language": "English",
+      "avatar": "bot-avatar.png",
+      "welcomeMessage": "Hello! I'm your customer support assistant. How can I help you today?",
+      "autoResponse": true,
+      "responseTime": "5"
+    },
+    "salesAssistant": {
+      "name": "Sales Assistant Bot",
+      "description": "AI sales assistant for lead qualification and sales support",
+      "type": "Sales",
+      "language": "English",
+      "avatar": "sales-bot-avatar.png",
+      "welcomeMessage": "Hi! I'm your sales assistant. Let me help you find the perfect solution!",
+      "autoResponse": true,
+      "responseTime": "3"
+    },
+    "technicalSupport": {
+      "name": "Technical Support Bot",
+      "description": "Technical support chatbot for handling technical issues and troubleshooting",
+      "type": "Technical Support",
+      "language": "English",
+      "avatar": "tech-bot-avatar.png",
+      "welcomeMessage": "Hello! I'm here to help with technical issues. What problem are you experiencing?",
+      "autoResponse": true,
+      "responseTime": "7"
+    }
+  },
+  "intents": [
+    {
+      "name": "Greeting",
+      "description": "Handle user greetings and introductions",
+      "examples": [
+        "Hello",
+        "Hi there",
+        "Good morning",
+        "Good afternoon",
+        "Good evening"
+      ]
+    },
+    {
+      "name": "Product Inquiry",
+      "description": "Handle product-related questions and inquiries",
+      "examples": [
+        "What products do you have?",
+        "Tell me about your products",
+        "Product information",
+        "What are your features?"
+      ]
+    },
+    {
+      "name": "Technical Support",
+      "description": "Handle technical issues and support requests",
+      "examples": [
+        "I have a technical problem",
+        "My system is not working",
+        "Need technical help",
+        "System error"
+      ]
+    },
+    {
+      "name": "Order Status",
+      "description": "Handle order status inquiries",
+      "examples": [
+        "Where is my order?",
+        "Order status",
+        "When will my order arrive?",
+        "Track my order"
+      ]
+    },
+    {
+      "name": "Payment Issues",
+      "description": "Handle payment-related problems",
+      "examples": [
+        "Payment problem",
+        "Billing issue",
+        "Payment failed",
+        "Refund request"
+      ]
+    },
+    {
+      "name": "Returns and Refunds",
+      "description": "Handle return and refund requests",
+      "examples": [
+        "I want to return my order",
+        "Refund request",
+        "Return policy",
+        "How do I return an item?"
+      ]
+    }
+  ],
+  "analytics": {
+    "dateRanges": [
+      "Last 7 days",
+      "Last 30 days",
+      "Last 3 months",
+      "Last 6 months",
+      "Last year"
+    ],
+    "exportFormats": [
+      "PDF",
+      "CSV",
+      "JSON",
+      "Excel"
+    ],
+    "timezones": [
+      "UTC",
+      "EST",
+      "PST",
+      "GMT",
+      "CET"
+    ]
+  },
+  "permissions": [
+    "Bot Management",
+    "Analytics View",
+    "User Management",
+    "System Settings",
+    "Report Generation",
+    "Data Export",
+    "API Access"
+  ],
+  "roles": [
+    {
+      "name": "Administrator",
+      "description": "Full access to all features",
+      "permissions": [
+        "Bot Management",
+        "Analytics View",
+        "User Management",
+        "System Settings",
+        "Report Generation",
+        "Data Export",
+        "API Access"
+      ]
+    },
+    {
+      "name": "Bot Manager",
+      "description": "Can manage bots and view analytics",
+      "permissions": [
+        "Bot Management",
+        "Analytics View",
+        "Report Generation",
+        "Data Export"
+      ]
+    },
+    {
+      "name": "Analytics Viewer",
+      "description": "Can only view analytics and reports",
+      "permissions": [
+        "Analytics View",
+        "Report Generation"
+      ]
+    }
+  ],
+  "testScenarios": {
+    "login": {
+      "validCredentials": {
+        "username": "admin@company.com",
+        "password": "SecurePass123!"
+      },
+      "invalidCredentials": {
+        "username": "invalid@email.com",
+        "password": "WrongPassword"
+      },
+      "emptyFields": {
+        "username": "",
+        "password": ""
+      }
+    },
+    "botCreation": {
+      "basicBot": {
+        "name": "Test Bot",
+        "description": "Test bot for automation",
+        "type": "Customer Service",
+        "language": "English"
+      },
+      "fullBot": {
+        "name": "Full Feature Bot",
+        "description": "Bot with all features enabled",
+        "type": "Sales",
+        "language": "English",
+        "avatar": "test-avatar.png",
+        "welcomeMessage": "Welcome to our test bot!",
+        "autoResponse": true,
+        "responseTime": "5"
+      }
+    },
+    "userManagement": {
+      "newUser": {
+        "fullName": "John Doe",
+        "email": "john.doe@company.com",
+        "role": "Bot Manager",
+        "status": "Active"
+      },
+      "adminUser": {
+        "fullName": "Jane Smith",
+        "email": "jane.smith@company.com",
+        "role": "Administrator",
+        "status": "Active"
+      }
+    }
+  },
+  "validationMessages": {
+    "required": {
+      "username": "Username is required",
+      "password": "Password is required",
+      "email": "Email is required",
+      "botName": "Bot name is required",
+      "fullName": "Full name is required"
+    },
+    "invalid": {
+      "email": "Please enter a valid email address",
+      "password": "Password must be at least 8 characters long",
+      "username": "Username must be a valid email address"
+    },
+    "success": {
+      "login": "Login successful",
+      "botCreated": "Bot created successfully",
+      "botUpdated": "Bot updated successfully",
+      "botDeleted": "Bot deleted successfully",
+      "userCreated": "User created successfully",
+      "userUpdated": "User updated successfully",
+      "userDeleted": "User deleted successfully",
+      "intentsAssigned": "Intents assigned successfully",
+      "permissionsUpdated": "Permissions updated successfully"
+    },
+    "error": {
+      "invalidCredentials": "Invalid credentials. Please try again.",
+      "botNotFound": "Bot not found",
+      "userNotFound": "User not found",
+      "accessDenied": "Access denied. You don't have permission to perform this action.",
+      "sessionTimeout": "Your session has expired. Please log in again."
+    }
+  },
+  "urls": {
+    "baseUrl": "https://admin.aichatbot.com",
+    "login": "/login",
+    "dashboard": "/dashboard",
+    "botManagement": "/bot-management",
+    "analytics": "/analytics",
+    "userManagement": "/user-management",
+    "settings": "/settings"
+  },
+  "selectors": {
+    "login": {
+      "usernameField": "#username",
+      "passwordField": "#password",
+      "loginButton": "button[type='submit']",
+      "rememberMeCheckbox": "#remember-me",
+      "forgotPasswordLink": "a[href*='forgot-password']"
+    },
+    "dashboard": {
+      "welcomeMessage": ".welcome-message",
+      "navigationMenu": ".main-navigation",
+      "totalBotsWidget": "#total-bots-widget",
+      "totalConversationsWidget": "#total-conversations-widget"
+    },
+    "botManagement": {
+      "createBotButton": "#create-bot-btn",
+      "botList": ".bot-list",
+      "botNameField": "#bot-name",
+      "botDescriptionField": "#bot-description",
+      "botTypeDropdown": "#bot-type",
+      "languageDropdown": "#bot-language"
+    },
+    "analytics": {
+      "dateRangeDropdown": "#date-range-dropdown",
+      "exportButton": "#export-report-btn",
+      "analyticsDashboard": ".analytics-dashboard"
+    },
+    "userManagement": {
+      "addUserButton": "#add-new-user-btn",
+      "userList": ".user-list",
+      "fullNameField": "#full-name",
+      "emailField": "#email",
+      "roleDropdown": "#role-dropdown"
+    }
+  }
+} 

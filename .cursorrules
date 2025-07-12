@@ -1,0 +1,178 @@
+# Cypress E2E Test Automation - Cursor Rules
+
+## Project Structure Rules
+
+### Directory Organization
+- Place Cypress E2E tests in `cypress/e2e/` directory
+- Organize feature files in `cypress/e2e/features/` with subdirectories for different test types (functional, endtoend)
+- Store step definitions in `cypress/support/step_definitions/` with organized subdirectories by feature
+- Place page objects in `cypress/e2e/pages/` directory
+- Store test fixtures in `cypress/fixtures/` directory
+- Place custom commands and helpers in `cypress/support/` directory
+- Store API helpers in `cypress/support/api/` directory
+
+### File Naming Conventions
+- Use kebab-case for feature files: `login.feature`, `point_history.feature`
+- Use camelCase for JavaScript files: `loginPage.js`, `apiHelper.js`
+- Use descriptive names that reflect the functionality being tested
+
+## BDD Feature File Rules
+
+### Gherkin Syntax Standards
+- Write clear, human-readable scenarios using `Given`, `When`, `Then`, `And`, `But`
+- Focus on user behavior and expected outcomes, not implementation details
+- Keep scenarios concise and focused on single, specific behavior
+- Use Scenario Outline for data-driven tests with Examples table
+- Include Background section for common setup steps
+
+### Feature File Structure
+```gherkin
+Feature: [Feature Name]
+    Background:
+        Given [common setup steps]
+        
+    Scenario: [specific test case]
+        When [action]
+        And [additional action]
+        Then [expected outcome]
+        
+    Scenario Outline: [data-driven test]
+        When [action with parameter]
+        Then [expected outcome]
+        Examples:
+            | parameter1 | parameter2 |
+            | value1     | value2     |
+```
+
+## Step Definition Rules
+
+### Organization
+- Group step definitions by feature in subdirectories
+- Use descriptive file names: `loginStep.js`, `pointHistoryStep.js`
+- Import page objects and use them in step definitions
+- Keep step definitions focused and reusable
+
+### Step Definition Patterns
+```javascript
+import {Given, When, Then} from '@badeball/cypress-cucumber-preprocessor';
+import LoginPage from "../../../e2e/pages/login_page";
+
+const login = new LoginPage();
+
+Given("A user lands on the admin login page", function () {
+  cy.visit(Cypress.config("baseUrl"));
+});
+
+When(/^A user enters the email "(.*)"$/, function (email) {
+  login.enterEmail(email);
+});
+
+Then("Clicks on the next button", function () {
+    login.clickOnNextButton();
+});
+```
+
+## Page Object Model Rules
+
+### Class Structure
+- Create classes for each page/component
+- Use getter methods for element selectors
+- Implement action methods that perform operations
+- Keep selectors centralized and maintainable
+
+### Page Object Pattern
+```javascript
+class LoginPage {
+    get email() {
+        return cy.get('input[id="email"]')
+    }
+    get nextButton() {
+        return cy.get('[class="indicator-label"]')
+    }
+    
+    enterEmail(email) {
+        this.email.type(email)
+    }
+    
+    clickOnNextButton() {
+        this.nextButton.contains('Next').click().wait(1000)
+    }
+    
+    verifyDashboardPage() {
+        cy.url("baseUrl").should("include", "/dashboard");
+    }
+}
+
+export default LoginPage
+```
+
+## Custom Commands Rules
+
+### Command Organization
+- Place custom commands in `cypress/support/commands.js`
+- Use descriptive command names that clearly indicate their purpose
+- Override existing Cypress commands when necessary for custom behavior
+- Import required dependencies at the top of the file
+
+
+
+## Configuration Rules
+
+### Cypress Configuration
+- Use `cypress.config.js` for configuration
+- Set up Cucumber preprocessor for BDD support
+- Configure retries for both run and open modes
+- Set appropriate timeouts and viewport settings
+- Organize environment variables in the config
+
+### Configuration Structure
+```javascript
+const { defineConfig } = require("cypress");
+const addCucumberPreprocessorPlugin = require("@badeball/cypress-cucumber-preprocessor").addCucumberPreprocessorPlugin;
+
+module.exports = defineConfig({
+  e2e: {
+    setupNodeEvents(on, config) {
+      addCucumberPreprocessorPlugin(on, config);
+      return config;
+    },
+    retries: {
+      runMode: 1,
+      openMode: 1,
+    },
+    specPattern: ['cypress/e2e/features/functional/**/*.feature'],
+    baseUrl: "https://your-app-url.com/",
+    defaultCommandTimeout: 20000,
+    viewportWidth: 1920,
+    viewportHeight: 1080,
+    env: {
+      // Environment variables
+    }
+  }
+});
+```
+
+## Dependencies Management
+
+### Required Packages
+```json
+{
+    "devDependencies": {
+        "@badeball/cypress-cucumber-preprocessor": "^21.0.3",
+        "@bahmutov/cypress-esbuild-preprocessor": "^2.2.4",
+        "@shelex/cypress-allure-plugin": "^2.41.0",
+        "cypress": "^13.17.0",
+        "cypress-file-upload": "^5.0.8",
+        "cypress-multi-reporters": "^2.0.5",
+        "cypress-xpath": "^2.0.1",
+        "eslint": "^9.19.0",
+        "eslint-plugin-cypress": "^4.1.0",
+        "mochawesome": "^7.1.3"
+    },
+    "dependencies": {
+        "dayjs": "^1.11.13",
+        "faker": "^6.6.6",
+        "papaparse": "^5.5.2"
+    }
+}
+```
